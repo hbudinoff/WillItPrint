@@ -225,14 +225,14 @@ if strcmp('on',handles.badVoxels(1).Visible)
 end
 %Clear tipping stuff
 if isfield(handles,'wiggleAreas') 
-    if strcmp('on',handles.wiggleAreas(1).Visible)
-        set(handles.wiggleAreas,'visible','off');
+    for i=1:size(handles.wiggleAreas)
+        set(handles.wiggleAreas(i), 'Visible','off')
     end
 end
 %Clear warping stuff
 if isfield(handles,'longAreas')
-    if strcmp('on',handles.longAreas(1).Visible)
-        set(handles.longAreas,'visible','off');
+    for i=1:size(handles.longAreas)
+        set(handles.longAreas(i), 'Visible','off')
     end
 end
 legend(handles.axes1,'off')
@@ -262,7 +262,7 @@ function radiobutton2_Callback(hObject, eventdata, handles)
 smallOn=get(hObject,'Value'); 
 if smallOn==1 %Display voxels if radio button is on
     set(handles.badVoxels,'visible','on');
-    legend([handles.partFaces,handles.badVoxels(1),handles.badVoxels(2)],{'Normal','Erroded','Filled in'})
+    legend([handles.partFaces,handles.badVoxels(1),handles.badVoxels(2)],{'Normal','Eroded','Filled in'})
 end
 
 guidata(hObject,handles)
@@ -522,7 +522,7 @@ guidata(hObject,handles);
 %Check to see if small feature is activated    
 if handles.radiobutton2.Value==1
     set(handles.badVoxels, 'Visible','on');
-    legend([handles.partFaces,handles.badVoxels(1),handles.badVoxels(2)],{'Normal','Erroded','Filled in'}) 
+    legend([handles.partFaces,handles.badVoxels(1),handles.badVoxels(2)],{'Normal','Eroded','Filled in'}) 
 end
 
 %Check to see if overhang is on
